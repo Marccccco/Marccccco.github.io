@@ -4,21 +4,21 @@
   <meta charset="utf-8">
   
   
-  <title>Vuex | Hexo</title>
+  <title>Vuex | Welcome To My Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="[toc] Vuexstore模式-状态管理如果是一个不怎么复杂的页面可以使用这个模式. 在选项式API中,响应式数据是用data()选项声明的.在内部,data()的返回值对象会通过reactive()这个公开的API函数转为响应式. 123456789&#x2F;&#x2F; store.jsimport &amp;#123; reactive &amp;#125; from &amp;#x27;vue&amp;#x27;export cons">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vuex">
 <meta property="og:url" content="http://example.com/2023/09/28/Vuex/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="Welcome To My Blog">
 <meta property="og:description" content="[toc] Vuexstore模式-状态管理如果是一个不怎么复杂的页面可以使用这个模式. 在选项式API中,响应式数据是用data()选项声明的.在内部,data()的返回值对象会通过reactive()这个公开的API函数转为响应式. 123456789&#x2F;&#x2F; store.jsimport &amp;#123; reactive &amp;#125; from &amp;#x27;vue&amp;#x27;export cons">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-09-28T06:54:50.309Z">
 <meta property="article:modified_time" content="2023-10-07T07:06:47.822Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:author" content="Marco">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Welcome To My Blog" type="application/atom+xml">
   
   
     <link rel="shortcut icon" href="/favicon.png">
@@ -47,8 +47,12 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">Welcome To My Blog</a>
       </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">这是一个副标题</a>
+        </h2>
       
     </div>
     <div id="header-inner" class="inner">
@@ -63,12 +67,12 @@
       <nav id="sub-nav">
         
         
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
         
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
       </div>
     </div>
   </div>
@@ -111,7 +115,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/09/28/Vuex/" data-id="clnfp88ba0000k5pjatgaff73" data-title="Vuex" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2023/09/28/Vuex/" data-id="clnfr9qha0003slpj28x05dlj" data-title="Vuex" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -122,7 +126,7 @@
 <nav id="article-nav">
   
     <a href="/2023/10/07/github+hexo%E9%83%A8%E7%BD%B2blog/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">前一篇</strong>
       <div class="article-nav-title">
         
           github+hexo部署blog
@@ -132,7 +136,7 @@
   
   
     <a href="/2023/09/27/flex%E5%B8%83%E5%B1%80/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">后一篇</strong>
       <div class="article-nav-title">flex布局</div>
     </a>
   
@@ -156,9 +160,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">十月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">九月 2023</a></li></ul>
     </div>
   </div>
 
@@ -166,7 +170,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
         
@@ -199,7 +203,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       
-      &copy; 2023 John Doe<br>
+      &copy; 2023 Marco<br>
       Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
