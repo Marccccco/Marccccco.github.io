@@ -79,135 +79,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-CSS使用知识点" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/10/10/CSS%E4%BD%BF%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9/" class="article-date">
-  <time class="dt-published" datetime="2023-10-10T05:45:23.000Z" itemprop="datePublished">2023-10-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/10/10/CSS%E4%BD%BF%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9/">CSS使用知识点</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="CSS使用指南"><a href="#CSS使用指南" class="headerlink" title="CSS使用指南"></a>CSS使用指南</h3><h4 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h4><table>
-<thead>
-<tr>
-<th>引入方式</th>
-<th>内容</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>行内样式</td>
-<td>直接在元素上,加<code>style</code>属性</td>
-<td>优先级最高</td>
-</tr>
-<tr>
-<td>内部样式</td>
-<td>使用<code>&lt;style&gt;</code>标签</td>
-<td></td>
-</tr>
-<tr>
-<td>外部样式</td>
-<td>用<code>&lt;head&gt;</code>标签内的<code>&lt;link&gt;</code>标签引入样式文件</td>
-<td></td>
-</tr>
-</tbody></table>
-<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><p>CSS语法是由_<strong>选择器</strong><em>和</em><strong>声明</strong>_组成的</p>
-<table>
-<thead>
-<tr>
-<th align="center">选择器分类</th>
-<th align="center">内容</th>
-<th align="center">备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">全局选择器</td>
-<td align="center">可与任何元素匹配;初始化</td>
-<td align="center">优先级最低</td>
-</tr>
-<tr>
-<td align="center">基础选择器</td>
-<td align="center">元素选择器<br />类选择器(对应元素的class属性,用.)<br />id选择器(对应元素的id属性,用#)<br />通配符选择器</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">关系选择器</td>
-<td align="center">后代选择器:选择所有被祖先元素包含的_后代元素_<br />子代选择器:选择所有被祖先元素包含的_直接子元素_<br />相邻兄弟选择器:选择紧跟E元素后的F元素,相邻的第一个兄弟元素<br />通用兄弟选择器:选择E元素之后的所有兄弟元素F</td>
-<td align="center">后代E F{}<br />子代E&gt;F{}<br />相邻兄弟 E+F{}<br />通用兄弟 E~F{}</td>
-</tr>
-</tbody></table>
-<h4 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h4><ul>
-<li>盒模型可以想象为一个盒子里装了content,这content跟盒子边框的距离就是padding,盒子的厚度就是border,盒子的外边距就是margin.</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>name</th>
-<th>公式</th>
-<th>使用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>content-box 内容盒-内容就是盒子的边界</td>
-<td>content-box width&#x3D;内容宽度</td>
-<td>一般不使用</td>
-</tr>
-<tr>
-<td>border-box 边框盒-边框才是盒子的边界</td>
-<td>width&#x3D;内容宽度+padding+border</td>
-<td>一般默认使用</td>
-</tr>
-</tbody></table>
-<ul>
-<li><code>box-sizing: content-box</code></li>
-</ul>
-<p><img src="/./CSS%E4%BD%BF%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9/%E7%9B%92%E6%A8%A1%E5%9E%8B.png"></p>
-<h4 id="CSS定位"><a href="#CSS定位" class="headerlink" title="CSS定位"></a>CSS定位</h4><h5 id="相对定位"><a href="#相对定位" class="headerlink" title="相对定位"></a>相对定位</h5><ul>
-<li><p>用作位移,占位置但是有偏移</p>
-</li>
-<li><p>用作给<code>position:absolute</code>元素做爸爸</p>
-</li>
-<li><p>配合<code>z-index</code></p>
-<p><code>每个元素的z-index属性默认为auto,计算出的值为0,值大的在上面,小的在下面,可以为负数</code></p>
-</li>
-</ul>
-<h5 id="绝对定位"><a href="#绝对定位" class="headerlink" title="绝对定位"></a>绝对定位</h5><p>脱离原来的位置,另起一层.</p>
-<p>absolute是相对于其祖元素第一个不是<code>position:static</code>定位的(一般是子绝父相)</p>
-<h5 id="固定定位"><a href="#固定定位" class="headerlink" title="固定定位"></a>固定定位</h5><p>一般用于广告页、回到顶部按钮等</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/10/10/CSS%E4%BD%BF%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9/" data-id="clnjwi1a300032ypj5hdlayme" data-title="CSS使用知识点" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
     <article id="post-CSS使用指南" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/10/10/CSS%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" class="article-date">
-  <time class="dt-published" datetime="2023-10-10T03:33:54.087Z" itemprop="datePublished">2023-10-10</time>
+  <time class="dt-published" datetime="2023-10-10T05:45:23.000Z" itemprop="datePublished">2023-10-10</time>
 </a>
     
   </div>
@@ -298,9 +173,9 @@
 </tr>
 </tbody></table>
 <ul>
-<li><p><code>box-sizing: content-box</code></p>
-<img src="./CSS使用指南/盒模型.png" style="zoom:50%; float:left" /></li>
+<li><code>box-sizing: content-box</code></li>
 </ul>
+<p><img src="/./CSS%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/%E7%9B%92%E6%A8%A1%E5%9E%8B.png"></p>
 <h4 id="CSS定位"><a href="#CSS定位" class="headerlink" title="CSS定位"></a>CSS定位</h4><h5 id="相对定位"><a href="#相对定位" class="headerlink" title="相对定位"></a>相对定位</h5><ul>
 <li><p>用作位移,占位置但是有偏移</p>
 </li>
@@ -317,7 +192,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/10/10/CSS%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" data-id="clnjwi19x00002ypjasx65fz0" data-title="CSS使用指南" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="http://example.com/2023/10/10/CSS%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" data-id="clnjwz8ef000455pjf7mh2dvn" data-title="CSS使用指南" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -375,7 +250,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/10/07/github+hexo%E9%83%A8%E7%BD%B2blog/" data-id="clnjwi1a600052ypj78rj36up" data-title="github+hexo部署blog" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="http://example.com/2023/10/07/github+hexo%E9%83%A8%E7%BD%B2blog/" data-id="clnjwz8eb000155pj46wn26pc" data-title="github+hexo部署blog" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -423,7 +298,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/09/28/Vuex/" data-id="clnjwi1a100012ypja07dakls" data-title="Vuex" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="http://example.com/2023/09/28/Vuex/" data-id="clnjwz8e6000055pjgy3rdqcr" data-title="Vuex" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -486,7 +361,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/09/27/flex%E5%B8%83%E5%B1%80/" data-id="clnjwi1a200022ypjbk3393mz" data-title="flex布局" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="http://example.com/2023/09/27/flex%E5%B8%83%E5%B1%80/" data-id="clnjwz8ee000355pjbbzsezu6" data-title="flex布局" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -612,7 +487,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/09/27/%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" data-id="clnjwi1a500042ypjfnnz12qt" data-title="常用快捷键" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="http://example.com/2023/09/27/%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" data-id="clnjwz8ed000255pjhs89d8ni" data-title="常用快捷键" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -655,10 +530,6 @@
       <ul>
         
           <li>
-            <a href="/2023/10/10/CSS%E4%BD%BF%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9/">CSS使用知识点</a>
-          </li>
-        
-          <li>
             <a href="/2023/10/10/CSS%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">CSS使用指南</a>
           </li>
         
@@ -672,6 +543,10 @@
         
           <li>
             <a href="/2023/09/27/flex%E5%B8%83%E5%B1%80/">flex布局</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/27/%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/">常用快捷键</a>
           </li>
         
       </ul>
