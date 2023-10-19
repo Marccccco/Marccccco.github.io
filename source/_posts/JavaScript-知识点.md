@@ -1,5 +1,5 @@
 ---
- title: JavaScript 知识点
+title: JavaScript 知识点
 date: 2023-10-11 09:43:24
 tags:
 ---
