@@ -79,6 +79,58 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-element-ui使用心得" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/10/19/element-ui%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/" class="article-date">
+  <time class="dt-published" datetime="2023-10-19T03:20:41.000Z" itemprop="datePublished">2023-10-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/10/19/element-ui%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/">element-ui使用心得</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="Table"><a href="#Table" class="headerlink" title="Table"></a>Table</h3><h4 id="合并表头"><a href="#合并表头" class="headerlink" title="合并表头"></a>合并表头</h4><h5 id="header-cell-style"><a href="#header-cell-style" class="headerlink" title="header-cell-style"></a>header-cell-style</h5><p>这种方式可以直接返回一个样式:<code>return &#123; display: &quot;none&quot; &#125;</code></p>
+<p>使用方式是在table上绑定一个方法 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  &lt;el-table</span><br><span class="line">    :data=<span class="string">&quot;data.tableData&quot;</span></span><br><span class="line">    :header-cell-style=<span class="string">&quot;headFirst&quot;</span></span><br><span class="line">  &gt;</span><br><span class="line">    ......</span><br><span class="line">  &lt;/el-table&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">setup</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="keyword">const</span> <span class="title function_">headFirst</span> = (<span class="params">&#123; row, column, rowIndex, columnIndex &#125;</span>)=&gt;&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    </span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>绑定的方法会出入一个对象,有四个属性<code>row</code>是当前行的集合,<code>column</code>是当前行的当前列,<code>rowIndex</code>是当前行,<code>columnIndex</code>是当前列下标.</p>
+<p>可以在里面加一些判断语句筛选出要改变的行列去进行改变,但是当进行合并时候用<code>row</code>取到的数据直接赋值<code>rowspan</code>跟<code>colsapn</code>是不行的会在拿到的对象身上加一个同名的属性,感觉是bug,在<code>header-cell-class-name</code>中就可以.</p>
+<h5 id="header-cell-class-name"><a href="#header-cell-class-name" class="headerlink" title="header-cell-class-name"></a>header-cell-class-name</h5><p>返回一个<code>class</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">  &lt;el-table</span><br><span class="line">    :data=<span class="string">&quot;data.tableData&quot;</span></span><br><span class="line">    :header-cell-<span class="keyword">class</span>-name=<span class="string">&quot;headFirst&quot;</span></span><br><span class="line">  &gt;</span><br><span class="line">    ......</span><br><span class="line">  &lt;/el-table&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">setup</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="keyword">const</span> <span class="title function_">headFirst</span> = (<span class="params">&#123; row, column, rowIndex, columnIndex &#125;</span>)=&gt;&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">if</span> (rowIndex === <span class="number">0</span> &amp;&amp; columnIndex === <span class="number">0</span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="variable language_">console</span>.<span class="title function_">log</span>(row[<span class="number">0</span>]);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      row[<span class="number">0</span>].<span class="property">rowSpan</span> = <span class="number">2</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">if</span> (rowIndex === <span class="number">1</span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">if</span> (columnIndex === <span class="number">0</span> || columnIndex === <span class="number">1</span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">return</span> <span class="string">&quot;ceshi&quot;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"><span class="selector-class">.ceshi</span> &#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">display</span>: none;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">&#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>这个是可以修改<code>row</code>的<code>rowsapan</code>和<code>colsapn</code>属性的,这俩属性主要是用于行列合并的.</p>
+<h5 id="span-method"><a href="#span-method" class="headerlink" title="span-method"></a>span-method</h5><p>这是表格内容合并行列的方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">  &lt;el-table</span><br><span class="line">    :data=<span class="string">&quot;data.tableData&quot;</span></span><br><span class="line">    :span-method=<span class="string">&quot;arraySpanMethod&quot;</span></span><br><span class="line">  &gt;</span><br><span class="line">    ......</span><br><span class="line">  &lt;/el-table&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">setup</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="keyword">const</span> <span class="title function_">arraySpanMethod</span> = (<span class="params">&#123; row, column, rowIndex, columnIndex &#125;</span>)=&gt;&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">if</span> (rowIndex % <span class="number">2</span> === <span class="number">0</span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">if</span> (columnIndex === <span class="number">0</span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">return</span> [<span class="number">1</span>, <span class="number">2</span>]</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (columnIndex === <span class="number">1</span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">return</span> [<span class="number">0</span>, <span class="number">0</span>]	<span class="comment">// &#123;rowspan:0,colspan:1,&#125;</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>返回一个数组或者对象,如果是数组那么第一个代表着占用的行数,第二个占用的列数,在使用过程中,假设你把第一列的第二行跟第三行合并了,要把第一列的第三行的<code>rowspan</code>设成<code>0</code>,要不它还是会占位值的.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/10/19/element-ui%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/" data-id="clnwus1af0000yppj30yue5r5" data-title="element-ui使用心得" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-CSS使用指南" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/10/10/CSS%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" class="article-date">
@@ -530,6 +582,10 @@
       <ul>
         
           <li>
+            <a href="/2023/10/19/element-ui%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/">element-ui使用心得</a>
+          </li>
+        
+          <li>
             <a href="/2023/10/10/CSS%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">CSS使用指南</a>
           </li>
         
@@ -543,10 +599,6 @@
         
           <li>
             <a href="/2023/09/27/flex%E5%B8%83%E5%B1%80/">flex布局</a>
-          </li>
-        
-          <li>
-            <a href="/2023/09/27/%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/">常用快捷键</a>
           </li>
         
       </ul>
