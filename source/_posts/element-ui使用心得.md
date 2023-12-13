@@ -91,9 +91,125 @@ tags:
 
 返回一个数组或者对象,如果是数组那么第一个代表着占用的行数,第二个占用的列数,在使用过程中,假设你把第一列的第二行跟第三行合并了,要把第一列的第三行的`rowspan`设成`0`,要不它还是会占位值的.
 
+#### 表格改变单独行样式
+
+有三种方式:`row-class-name`、`row-style`、`cell-class-name`
+
+**注意:**在elementUI中，row-class-name、row-style、cell-class-name等属性要想生效必须使用**全局class**才能生效(`row-style`好像不用)
+
+##### row-style
+
+```html
+<template>
+  <el-table stripe
+    :data="tableData"
+    style="width: 100%"
+    :row-style="tableRowClassName">
+    <el-table-column prop="date" label="日期" width="180"></el-table-column>
+</template>
+<script>
+export default = {
+ methods:{
+   tableRowClassName({row, rowIndex}) {
+     let styleRes = {
+       "background": "#0181C2 !important"
+     }
+     if(this.multipleSelection.findIndex(item => item.id=== row.id) !== -1) {
+       return styleRes
+     }
+   }
+ }
+} 
+</script>
+
+
+```
 
 
 
+##### row-class-name
+
+```html
+<template>
+ <div>
+   <el-table :data="tableData" row-class-name="rowName"> 或者 :row-class-name="rowClassName" 绑定方法
+    <el-table-column prop="name" label="姓名"></el-table-column>
+    <el-table-column prop="date" label="日期"></el-table-column>
+     <el-table-column prop="address" label="地址" width="800"></el-table-column>
+   </el-table>
+ </div>
+</template>
+<script>
+export default = {
+ methods:{
+   rowClassName({row,columnIndex}){
+     if(row.date=="2022-05-01"){
+       return "rowName"
+     }
+   }
+ }
+} 
+</script>
+<style>
+.rowName{
+ background:pink!important;
+ color:deeppink
+}
+</style>
+
+```
+
+##### cell-class-name
+
+```html
+<template>
+ <div>
+   <el-table :data="tableData" cell-class-name="cellName"> 或者 :cell-class-name="cellClassName"
+     <el-table-column prop="name" label="姓名"></el-table-column>
+     <el-table-column prop="date" label="日期"></el-table-column>
+     <el-table-column prop="address" label="地址" width="800"></el-table-column>
+   </el-table>
+</div>
+</template>
+<script>
+export default = {
+  methods:{
+   cellClassName({row,column,rowIndex,columnIndex}){
+     if(row.date!="2022-05-01" && column.label=="日期"){
+       return "cellName"
+     }
+   }
+ }
+} 
+</script>
+<style>
+.cellName{
+ background:brown!important;
+ color:chartreuse
+}
+</style>
+
+```
+
+### 表单验证
+
+```js
+	openDialog() {
+			this.dialogVisible = true;
+			if(this.$refs['ruleFormRef']){
+				this.$refs['ruleFormRef'].resetFields()	// 打开的时候清一波,关闭的时候清如果后续要使用表单的信息会为空
+			}
+		},
+		Submit() {
+			this.$refs['ruleFormRef'].validate(valid => {	// 关闭或者提交的时候验证一下
+					if(valid){
+						// doSomething
+						this.dialogVisible = false;
+					}
+				}
+			)
+		},
+```
 
 
 
