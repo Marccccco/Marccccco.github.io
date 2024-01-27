@@ -56,7 +56,10 @@ deploy:
 把_config.yml中的post_asset_folder设为true,这样每次在`hexo n  'xxx'`后就会在hexo/source/_post文件夹下生成一个.md文件和一个同名文件夹，文件夹存放文章中的图片.
 使用就是![图片描述]（./包名/图片）
 ```
-
+#### windows系统如果无法使用hexo
+![设置](./github+hexo部署blog/1.jpg)
+![power](./github+hexo部署blog/2.jpg)
+![应用](./github+hexo部署blog/3.jpg)
 
 
 
