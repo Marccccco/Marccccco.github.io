@@ -3,7 +3,7 @@ title: element-ui使用心得
 date: 2023-10-19 11:20:41
 tags:
 ---
-
+[toc]
 ### Table
 
 #### 合并表头
@@ -192,7 +192,9 @@ export default = {
 ```
 
 ### 表单验证
-
+1、form组件上必须要有ref
+2、form-item上必须要有prop属性
+3、如果有rule属性,那么prop属性的值要跟rule属性的key值一样
 ```js
 	openDialog() {
 			this.dialogVisible = true;
@@ -210,7 +212,9 @@ export default = {
 			)
 		},
 ```
-
+#### 表单验证清空无效
+准确的来说是赋值后不能重置表单项,`resetFields()`方法是重置为初始值,并移除校验结果,所以如果说在表单mount之前就赋值了，那么初始值就是赋值后的值,所以需要用到`nextTick`方法.
+还有一种情况是如果表单项有绑定`v-if`属性,并且`v-if`为`false`的时候,那么表单清空也会失效,因为压根没有渲染,所以可以使用`v-show`代替`v-if`
 
 
 
