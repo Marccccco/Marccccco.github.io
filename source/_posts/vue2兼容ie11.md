@@ -9,7 +9,7 @@ title: vue2兼容ie11
 > 1%
 last 2 versions
 not dead
-not ie <=11 //加上此行配置即可
+not ie <=11 //加上此行配置即可,不加也能行
 ```
 3. 在`babel.config.js`中添加以下代码
 ```js

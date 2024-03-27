@@ -104,6 +104,22 @@ align-content: space-evenly /* 每行上下/左右间隔一样
 
 可以给flex单个元素设置margin值为auto,以此来实现左右/上下分割的效果
 
+#### 实现左侧固定宽度,右侧自适应宽度
+1. 布局结构如下
+```css
+.container{
+    display: flex;
+    .left{
+        width: 200px;
+    }
+    .right{
+        flex: 1;
+        /* 或者 */
+        /* width: calc(100% - 200px); */
+    }
+}
+```
+
 
 
 
