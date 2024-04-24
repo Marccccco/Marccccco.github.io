@@ -1,7 +1,7 @@
 ---
 title: CSS使用指南
 date: 2023-10-10 13:45:23
-cover: /img/heard.jpg
+cover: /img/head.jpg
 ---
 ### CSS使用指南
 
