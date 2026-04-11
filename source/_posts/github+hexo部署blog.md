@@ -51,6 +51,7 @@ deploy:
 安装一个依赖
 
 `npm install https://github.com/CodeFalling/hexo-asset-image --save`
+或者`npm install hexo-asset-image --save`
 
 ```
 把_config.yml中的post_asset_folder设为true,这样每次在`hexo n  'xxx'`后就会在hexo/source/_post文件夹下生成一个.md文件和一个同名文件夹，文件夹存放文章中的图片.
